@@ -1,0 +1,545 @@
+openapi: 3.0.0
+info:
+  title: Common Router
+  description: This is a simple API
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /getMenuTypes:
+    get:
+      tags:
+      - getMenuTypes
+      summary: searches inventory
+      description: |
+        By passing in the appropriate options, you can search for
+        available inventory in the system
+      operationId: searchInventory
+      parameters:
+      - name: bodylimit
+        in: query
+        description: number of menu items to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 20
+          minimum: 10
+          type: integer
+          example: 15
+      - name: pagelimit
+        in: query
+        description: number of pages to be shown
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 5
+          minimum: 1
+          type: integer
+          example: 2
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InventoryItem'
+                x-content-type: application/json
+        "400":
+          description: bad input parameter
+      x-swagger-router-controller: GetMenuTypes
+  /getItemGroups:
+    get:
+      tags:
+      - getMenuTypes
+      summary: searches inventory
+      description: |
+        By passing in the appropriate options, you can search for
+        available inventory in the system
+      operationId: getItemGroupsGET
+      parameters:
+      - name: bodylimit
+        in: query
+        description: number of menu items to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 20
+          minimum: 10
+          type: integer
+          example: 15
+      - name: pagelimit
+        in: query
+        description: number of pages to be shown
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 5
+          minimum: 1
+          type: integer
+          example: 2
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InventoryItem'
+                x-content-type: application/json
+        "400":
+          description: bad input parameter
+      x-swagger-router-controller: GetMenuTypes
+  /getFoodTypes:
+    get:
+      tags:
+      - getFoodTypes
+      description: |
+        catagory of food available
+      operationId: getFoodTypesGET
+      parameters:
+      - name: bodylimit
+        in: query
+        description: number of menu items to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 20
+          minimum: 10
+          type: integer
+          example: 15
+      - name: pagelimit
+        in: query
+        description: number of pages to be shown
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 5
+          minimum: 1
+          type: integer
+          example: 2
+      responses:
+        "200":
+          description: returns back the type of food that is available
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200'
+                x-content-type: application/json
+        "400":
+          description: bad input parameter
+      x-swagger-router-controller: GetFoodTypes
+  /getItemCategories:
+    get:
+      tags:
+      - getItemCategories
+      description: |
+        available items
+      operationId: getItemCategoriesGET
+      parameters:
+      - name: bodylimit
+        in: query
+        description: number of menu items to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 20
+          minimum: 10
+          type: integer
+          example: 15
+      - name: pagelimit
+        in: query
+        description: number of pages to be shown
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 5
+          minimum: 1
+          type: integer
+          example: 2
+      responses:
+        "200":
+          description: returns back the food item that is available
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_1'
+                x-content-type: application/json
+        "400":
+          description: bad input parameter
+      x-swagger-router-controller: GetItemCategories
+  /getCuisines:
+    get:
+      tags:
+      - getCuisines
+      description: |
+        available cuisines
+      operationId: getCuisinesGET
+      parameters:
+      - name: bodylimit
+        in: query
+        description: number of menu items to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 20
+          minimum: 10
+          type: integer
+          example: 15
+      - name: pagelimit
+        in: query
+        description: number of pages to be shown
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 5
+          minimum: 1
+          type: integer
+          example: 2
+      responses:
+        "200":
+          description: returns back the Cuisines that are available
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_2'
+                x-content-type: application/json
+      x-swagger-router-controller: GetCuisines
+  /getPaymentMethods:
+    get:
+      tags:
+      - getPaymentMethods
+      description: |
+        available payment methods
+      operationId: getPaymentMethodsGET
+      parameters:
+      - name: bodylimit
+        in: query
+        description: number of  items to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 20
+          minimum: 10
+          type: integer
+          example: 15
+      - name: pagelimit
+        in: query
+        description: number of pages to be shown
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 5
+          minimum: 1
+          type: integer
+          example: 2
+      responses:
+        "200":
+          description: returns back the payment methods that are available
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_3'
+                x-content-type: application/json
+        "400":
+          description: bad input parameter
+      x-swagger-router-controller: GetPaymentMethods
+  /getCountryCharges:
+    get:
+      tags:
+      - getCountryCharges
+      description: |
+        available payment methods
+      operationId: getCountryChargesGET
+      parameters:
+      - name: bodylimit
+        in: query
+        description: number of  items to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 20
+          minimum: 10
+          type: integer
+          example: 15
+      - name: pagelimit
+        in: query
+        description: number of pages to be shown
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 5
+          minimum: 1
+          type: integer
+          example: 2
+      responses:
+        "200":
+          description: returns back the country charges that are available
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_4'
+                x-content-type: application/json
+        "400":
+          description: bad input parameter
+      x-swagger-router-controller: GetCountryCharges
+  / getCountryTaxStructures:
+    get:
+      tags:
+      - getCountryTaxStructures
+      description: |
+        available tax structure
+      operationId: _getCountryTaxStructuresGET
+      parameters:
+      - name: bodylimit
+        in: query
+        description: number of  items to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 20
+          minimum: 10
+          type: integer
+          example: 15
+      - name: pagelimit
+        in: query
+        description: number of pages to be shown
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 5
+          minimum: 1
+          type: integer
+          example: 2
+      responses:
+        "200":
+          description: returns back the country tax structure that are available
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_5'
+                x-content-type: application/json
+        "400":
+          description: bad input parameter
+      x-swagger-router-controller: GetCountryTaxStructures
+  /getRandomQuote:
+    get:
+      tags:
+      - getRandomQuote
+      description: |
+        generate a random quote
+      operationId: getRandomQuoteGET
+      parameters:
+      - name: bodylimit
+        in: query
+        description: number of menu items to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 20
+          minimum: 10
+          type: integer
+          example: 15
+      - name: pagelimit
+        in: query
+        description: number of pages to be shown
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 5
+          minimum: 1
+          type: integer
+          example: 2
+      responses:
+        "200":
+          description: returns back a quote
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Your diet is a bank account. Good food choices are good investments.
+                  - Bethenny Frankel
+                x-content-type: application/json
+        "400":
+          description: bad input parameter
+      x-swagger-router-controller: GetRandomQuote
+  /registerLead:
+    post:
+      tags:
+      - registerLead
+      operationId: registerLeadPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body'
+      responses:
+        "201":
+          description: item created
+        "400":
+          description: invalid input, object invalid
+        "409":
+          description: an existing item already exists
+      x-swagger-router-controller: RegisterLead
+  /downloadApp/{appType}:
+    post:
+      tags:
+      - downloadApp
+      description: return back the download link of business and customer app
+      operationId: downloadAppAppTypePOST
+      parameters:
+      - name: appType
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Info not available
+      x-swagger-router-controller: DownloadApp
+components:
+  schemas:
+    InventoryItem:
+      required:
+      - description
+      - display
+      - value
+      type: object
+      properties:
+        value:
+          type: string
+          example: dessert
+        display:
+          type: string
+          example: Desserts
+        desc:
+          type: string
+          example: ""
+      example:
+        display: Desserts
+        value: dessert
+        desc: ""
+    inline_response_200:
+      properties:
+        value:
+          type: string
+          example: jain
+        display:
+          type: string
+          example: Jain
+        desc:
+          type: string
+          example: Jain
+      example:
+        display: Jain
+        value: jain
+        desc: Jain
+    inline_response_200_1:
+      properties:
+        value:
+          type: string
+          example: todays_special
+        display:
+          type: string
+          example: Todays_Special
+        desc:
+          type: string
+          example: Todays_Special
+      example:
+        display: Todays_Special
+        value: todays_special
+        desc: Todays_Special
+    inline_response_200_2:
+      properties:
+        value:
+          type: string
+          example: chinese
+        display:
+          type: string
+          example: Chinese
+        desc:
+          type: string
+          example: ""
+      example:
+        display: Chinese
+        value: chinese
+        desc: ""
+    inline_response_200_3:
+      properties:
+        country:
+          type: string
+          example: India
+        paymentMethods:
+          type: string
+          example: ' '
+      example:
+        country: India
+        paymentMethods: ' '
+    inline_response_200_4:
+      properties:
+        country:
+          type: string
+          example: India
+        charges:
+          type: string
+          example: ' '
+      example:
+        country: India
+        charges: ' '
+    inline_response_200_5:
+      properties:
+        country:
+          type: string
+          example: India
+        taxStructures:
+          type: string
+          example: ' '
+      example:
+        country: India
+        taxStructures: ' '
+    body:
+      type: object
+      properties:
+        restaurantName:
+          type: string
+          example: KFC
+        fullName:
+          type: string
+          example: Kentucky Fried Chicken
+        phone:
+          type: number
+          example: 7777777777
